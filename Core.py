@@ -4,7 +4,7 @@ from BigLearnAPI import big_learn_api
 from Log import log
 from QQBotMessage import send_group_message, send_user_message
 from Scheduler import time_in_work, min_sleep
-from Settings import WorkTimeStart, ServerName
+from Settings import WorkTimeStart, ServerName, HOST, PORT
 from Server import server
 from threading import Thread
 
@@ -88,3 +88,5 @@ def core():
 
 if ServerName == "Base":
     core()
+else:
+    app.run(debug=True, host=HOST, port=PORT)

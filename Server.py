@@ -1,6 +1,8 @@
 import json
 from Log import log
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from Settings import HOST, PORT
+
 
 class RequestHandler(BaseHTTPRequestHandler):
     '''处理请求并返回页面'''
@@ -31,8 +33,8 @@ class RequestHandler(BaseHTTPRequestHandler):
 #----------------------------------------------------------------------
 
 def server():
-    host = "0.0.0.0"
-    port = 12000
+    host = HOST
+    port = PORT
     serverAddress = (host, port)
     log.update("(Server): http://{}:{}/".format(host, port))
     server = HTTPServer(serverAddress, RequestHandler)
