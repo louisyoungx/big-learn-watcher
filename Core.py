@@ -4,7 +4,7 @@ from BigLearnAPI import big_learn_api
 from Log import log
 from QQBotMessage import send_group_message, send_user_message
 from Scheduler import time_in_work, min_sleep
-from settings import WorkTimeStart
+from Settings import WorkTimeStart
 
 
 def cruise():
@@ -32,7 +32,7 @@ def cruise():
             end_time = "{}-{}-{} {}".format(now.tm_year, now.tm_mon, now.tm_mday+2, WorkTimeStart)
             min_sleep(now_str_time, end_time)
         if now.tm_wday == 6: # 周日
-            log.update("(Core): Over The Weekend")
+            # log.update("(Core): Over The Weekend")
             now_str_time = "{}-{}-{} {}:{}".format(now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min)
             end_time = "{}-{}-{} {}".format(now.tm_year, now.tm_mon, now.tm_mday+1, WorkTimeStart)
             min_sleep(now_str_time, end_time)
@@ -67,7 +67,7 @@ def working():
     # print(MESSAGE)
 
     send_group_message(MESSAGE) # 发送群消息
-    send_user_message(MESSAGE, 1462648167) # 发送个人消息
+    # send_user_message(MESSAGE, 1462648167) # 发送个人消息
     log.update("(Core): Waiting 5 Minutes")
     time.sleep(60 * 5)
 

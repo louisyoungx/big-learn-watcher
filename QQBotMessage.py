@@ -3,7 +3,7 @@ import time
 import requests
 
 from Log import log
-from settings import GroupID, QQBotUID
+from Settings import GroupID, QQBotUID
 
 
 def send_user_message(message, touseruid):
@@ -25,13 +25,13 @@ def send_user_message(message, touseruid):
         mes = message.replace("\n", " ")
         if len(mes) > 10:
             mes = mes[:10] + "···"
-        log.update("(User Message): Send {} <SUCCESS>".format(mes))
+        log.update("(Group Message): Send {} <SUCCESS>".format(mes))
         # print(r.request.url)
         # r.raise_for_status()
         # print(r.text)
         return True
     except:
-        print("(User Message)：Message Send Failed <ERROR>")
+        log.update("(Group Message)：Message Send Failed <ERROR>")
         return False
 
 def send_group_message(message):

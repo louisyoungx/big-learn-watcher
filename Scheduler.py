@@ -1,7 +1,7 @@
 import datetime
 import time
 from Log import log
-from settings import WorkTimeStart, WorkTimeEnd
+from Settings import WorkTimeStart, WorkTimeEnd
 
 
 def getTime():
