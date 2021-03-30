@@ -4,7 +4,9 @@ from BigLearnAPI import big_learn_api
 from Log import log
 from QQBotMessage import send_group_message, send_user_message
 from Scheduler import time_in_work, min_sleep
-from Settings import WorkTimeStart
+from Settings import WorkTimeStart, ServerName
+from Server import server
+from threading import Thread
 
 
 def cruise():
@@ -66,8 +68,8 @@ def working():
               '{}'.format(AllNum, DoNum, DontNum, Time, DontStr)
     # print(MESSAGE)
 
-    send_group_message(MESSAGE) # 发送群消息
-    # send_user_message(MESSAGE, 1462648167) # 发送个人消息
+    # send_group_message(MESSAGE) # 发送群消息
+    send_user_message(MESSAGE, 1462648167) # 发送个人消息
     log.update("(Core): Waiting 5 Minutes")
     time.sleep(60 * 5)
 
@@ -75,6 +77,14 @@ def running():
     '''死循环执行'''
     while True:
         cruise()
+        
+def core():
+    thread_core = Thread(target=running)
+    thread_core.start()
+    
+    if ServerName == "Base":
+        thread_server = Thread(target=server)
+        thread_server.start()
 
-# if __name__ == '__main__':
-#     running()
+if ServerName == "Base":
+    core()
