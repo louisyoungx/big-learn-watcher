@@ -76,5 +76,5 @@ def running():
     while True:
         cruise()
 
-if __name__ == '__main__':
-    running()
+# if __name__ == '__main__':
+#     running()
